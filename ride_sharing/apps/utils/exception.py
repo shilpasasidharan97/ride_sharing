@@ -1,0 +1,2 @@
+class InvalidTripStatus(Exception):
+    pass

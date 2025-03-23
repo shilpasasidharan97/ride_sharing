@@ -14,11 +14,7 @@ def api_root(request, format=None):
     return Response(
         OrderedDict(
             [
-                (
-                    'Razorpay', OrderedDict(
-                    )
-                ),
-                
+                ("Razorpay", OrderedDict()),
             ]
         )
     )
