@@ -12,7 +12,7 @@ data/
 truckbookers/public/static/
 truckbookers/public/media/
 
-##vs code 
+##vs code
 .vscode/
 
 ### Django.Python Stack ###
