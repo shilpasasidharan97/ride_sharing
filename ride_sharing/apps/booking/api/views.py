@@ -20,6 +20,10 @@ class CreateBookingAPIView(CreateAPIView):
 
 
 class BookingViewSet(viewsets.ModelViewSet):
+    """
+    API for Booking list , detail, patch based on user role.
+    """
+
     permission_classes = [IsAuthenticated]
     queryset = Booking.objects.all().order_by("-id")
     serializer_class = BookingSerializer

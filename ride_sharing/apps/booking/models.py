@@ -245,8 +245,6 @@ class Trip(models.Model):
         self.ongoing_status = new_status
         self.save()
 
-        # create Terminal logs
-
         ongoing_terminal_map = {
             self.TRIP_LOCATION_REACHED: "arrived",
             self.TRIP_LOCATION_PICKUP_DEPART: "departed",
@@ -300,17 +298,6 @@ class Trip(models.Model):
             )
 
     def set_status(self, new_status, request_user=None, description=None):
-        """
-        !!! MANDATORY NOTIFICATION !!!
-        Set a new status for this trip.
-
-        If the requested status is not valid, then ``InvalidTripStatus`` is
-        raised.
-        # TODO @Sandeep create custom exception InvalidTripStatus
-        New Status should be updated only using this function
-        # TODO @Sandeep Refer: https://github.com/django-oscar/django-oscar/blob/1739eba00f5f0cfb4289a85b9797c80a52692544/src/oscar/apps/order/abstract_models.py#L140-L184
-        """
-
         old_status = self.status
 
         # HOOKS FOR PRE_STATUS_UPDATE

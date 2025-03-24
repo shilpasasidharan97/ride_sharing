@@ -140,7 +140,7 @@ class TripConfirmSerializer(serializers.ModelSerializer):
         return booking
 
     def create(self, validated_data):
-        driver = self.context["request"].user.driver  # Get the driver from request
+        driver = self.context["request"].user.driver
         booking = validated_data["booking_id"]
 
         with transaction.atomic():
