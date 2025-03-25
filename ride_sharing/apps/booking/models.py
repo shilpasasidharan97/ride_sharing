@@ -344,3 +344,27 @@ class TripStatusLog(models.Model):
         "user.User", on_delete=models.SET_NULL, null=True, blank=True
     )
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+class DriverLocation(models.Model):
+    """
+    Stores and tracks driver's current location
+    """
+
+    driver = models.OneToOneField(
+        "driver.Driver", on_delete=models.CASCADE, related_name="location"
+    )
+    point = PointField(null=True, blank=True)
+    heading = models.FloatField(default=0.0)
+    speed = models.FloatField(default=0.0)
+    timestamp = models.DateTimeField(auto_now=True)
+    trip = models.ForeignKey(
+        "booking.Trip",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="driver_locations",
+    )
+
+    def __str__(self):
+        return f"Location for {self.driver} at {self.timestamp}"
